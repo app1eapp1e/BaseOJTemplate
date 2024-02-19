@@ -1,0 +1,22 @@
+README: IMPORTANT
+1. run the batch file first!!!
+2. It only supports C/C++, Python!
+3. Plsase set the paths in "gcc_path.txt", "g++_path.txt", and "pypath.txt"!!!
+
+Code Instructions:
+judge_*:
+1. Python judge uses special ways.
+2. The path settings was strong enough.
+3. The C* compilation needs a time stop!!!
+
+Advantages :)
+1. Portable, Local, Net-Free
+2. Stable.
+3. Open-Source.
+4. Detailed UKE instead of UnknownError
+
+Disadvantages ^_^
+1. No MLE, OLE, PE
+2. Non-accurate Program Running Time, needs your program to finish in about 0.9+ seconds instead of 1.00.
+3. I/O Binding sometimes fails.(Especially in Python)
+4. Only have Python, C, and C++.

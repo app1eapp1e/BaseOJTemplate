@@ -1,0 +1,24 @@
+[
+"""The hospital needs a program to judge someone's emergent, urgent, or not fever.
+The temperature conversion is 9*Celcius=5*(Farenheit-32).""",
+
+"""a real number, of temperature in celcius.""",
+
+"""if Farenheit temperature is < 89 or > 104, output "Urgent";
+if Farenheit temperature is <= 104 or > 98, output "Emergent";
+else, he's healthy, output "Not Fever".""",
+
+[[
+"""37""",
+"""Emergent""",
+]],
+
+"""37 Celcius = 98.6 Farenheit, in range of emergent""",
+
+[
+["""36""", """Not Fever"""],
+["""40""", """Emergent"""],
+["""31""", """Urgent"""],
+["""46""", """Urgent"""],
+["""32""", """Not Fever"""]],
+]

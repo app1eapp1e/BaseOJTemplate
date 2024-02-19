@@ -1,0 +1,12 @@
+Hello World
+A+B Problem
+Rectangle Area
+Simple Calculator
+Hospital Fever Diagnosis
+Oral Expression
+Triangular Number
+N!
+Hailstorm Hypo
+Golden Bach
+Closed Range Sum
+Closed Range Sum Plus

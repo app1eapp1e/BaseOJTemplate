@@ -1,0 +1,16 @@
+[
+"""A+B Problem is important for computers. Please make a program to solve the sum of 2 integers.""",
+
+"""2 integers, a, and b, in a line.""",
+"""1 line: the value of a+b.""",
+[[
+"""2 3""",
+"""5""",
+]],
+"""""",
+[["""1 4""","""5"""],
+["""100 201""", """301"""],
+["""1101 2002""", """3103"""],
+["""6520653 58465498""", """64986151"""],
+["""100000 -500000""", """-400000"""]],
+]

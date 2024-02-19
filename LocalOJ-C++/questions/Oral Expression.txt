@@ -1,0 +1,31 @@
+[
+"""Bob is speaking an expression with 5 kinds of operands:
++(add/plus), -(subtracts/minus), *(multiplies/times), /(divides/ratio), %(modulo).
+The expression has got $n$ numbers and $n-1$ operands, but without "(" or ")", 
+and the operands are the texts above.
+Your task if to make a program to calculate the value of the expression from left to right.
+""",
+
+"""first line, N, an integer; second line, N numbers and N-1 words that represents the expression.
+The numbers are in range of double-precision floats.
+""",
+"""1 line: the value of the expression, with 2 digits after decimal point. If divide 0 appears, output NaN.
+""",
+[[
+"""5
+2 minus 1 plus 5 multiplies 3 add 7""",
+"""25""",
+]],
+"""2-1=1; 1+5=6; 6*3=18; 18+7=25.
+Beware: There's a chance that outputs -0.00. Turn it into 0.00.""",
+[["""2
+1 plus 4""","""5.00"""],
+["""10
+1 plus 1 add 1 sutracts 1 multiplies 5 times 3 modulo 5 plus 5 minus 10 times 0""", """0.00"""],
+["""5
+2.5 times 10 divides 20 times 8 plus 10.5""", """20.50"""],
+["""7
+3.7 plus 4.5 multiplies 2.7 plus 3.7 add 2.2 divides 7.5 subtracts 2""", """1.74"""],
+["""10
+1 plus 1 add 1 sutracts 1 multiplies 5 times 3 divides 0 plus 5 minus 10 times 0""", """NaN"""]],
+]

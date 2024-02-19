@@ -1,0 +1,16 @@
+[
+"""Hello World was a famous line of programming.
+There's a fun story:
+    Once a rich programmer decided to learn caligraphy. What's his first line? Hello world!
+Now your task is make a program Hello World.""",
+
+"""No input""",
+"""Output 'hello world', without capitalize or punctuation""",
+[[
+"""(None)""",
+"""hello world""",
+]],
+"""Don't forget "using namespace std;"!""",
+[["""""","""hello world"""],["""""","""hello world"""],["""""","""hello world"""],["""""","""hello world"""],["""""","""hello world"""]],
+""""""
+]

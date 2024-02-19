@@ -1,0 +1,16 @@
+[
+"""Please make a program to solve the area of the given rectangle.""",
+
+"""2 integers, a, and b, means width and height, in a line.""",
+"""1 line: the area.""",
+[[
+"""2 3""",
+"""6""",
+]],
+"""Beware: the numbers are big.""",
+[["""1 4""","""4"""],
+["""100 201""", """20100"""],
+["""11 20""", """220"""],
+["""8475 2837""", """24043575"""],
+["""19283 384775""", """7419616325"""]],
+]

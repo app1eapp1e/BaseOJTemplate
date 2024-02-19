@@ -1,0 +1,21 @@
+[
+"""Goldbach said: Each even number >=4 can be divided into the sum of 2 primes.
+Like, 4=2+2, 6=3+3, 8=3+5, etc.
+Given the even number, Your task is to find the split plans, that let the first prime be the smallest and the second be the largest.
+""",
+
+"""One line, N, an even number >=4, in range long long[-(1<<63)~((1<<63)-1)].
+""",
+"""One line, P and Q, spaced, are primes, that bas the largest Q and smallest P, and P+Q=N.
+""",
+[[
+"""20""",
+"""3 17""",
+]],
+"""20=3+17=7+13, we select the smallest P=3, Q=17.""",
+[["""30""","""7 23"""],
+["""9876""", """5 9871"""],
+["""78686""", """37 78649"""],
+["""67868768""", """7 67868761"""],
+["""7686876868866""", """5 7686876868861"""]],
+]
