@@ -26,6 +26,8 @@ class LoadedKey:
 
 @func_timeout.func_set_timeout(1.01)
 def get_output(interpreter, pycname, inputdat, args=[]):
+    # We import the compiled file as a module
+    # Because subprocess refuses us to control Python.
     os.chdir(os.path.dirname(__file__))
     _f = open('__input__', 'a')
     _f.truncate(0)

@@ -6,6 +6,8 @@ import subprocess
 import time
 import os
 
+# The comments are also for judge_[C/CPP/Pascal].
+
 class LoadedKey:
     def __init__(self, data):
         self.data = data
@@ -47,7 +49,9 @@ def judge_proc_c(file, statobj: Status, updater, stop_proc, load_key):
         return
     while not os.path.exists(os.path.join(os.path.dirname(__file__), exename)):
         time.sleep(0.1)
-    time.sleep(0.7)
+    time.sleep(0.7)# WARNING, this depends your compiler and computer speed
+    # os.popen has got this feature: redirecting operations are launched in another thread.
+    # So we need this sleep.
     statobj.status = Judging()
     updater(statobj)
     inputid = 0
@@ -86,7 +90,7 @@ def judge_proc_c(file, statobj: Status, updater, stop_proc, load_key):
             p.kind = TimeLimitExceeded()
         statobj.pointdata.append(p)
         inputid += 1
-        
+    # The judgements are not fully correct.
     if all_rte:
         statobj.kind = RTError()
     elif all_tle:

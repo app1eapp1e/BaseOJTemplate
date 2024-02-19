@@ -1,3 +1,4 @@
+### DEPRACATED -- The file is in ./questions/help_tool
 import os
 import sys
 def load_data(filename):

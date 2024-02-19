@@ -3,15 +3,20 @@ from status import *
 import shutil
 import subprocess
 
+# The following comments are the same for compiling_*.py
+# Argument for compiling_proc_c are same for judge_*.judge_proc_*
+
 FORMAT = '%s -O2 -w -fmax-errors=3 %s -lm -o %s.exe 2>./__output__'
 
 def update_gcc():
+    """Update GCC Path. Returns None."""
     global GCC
     current = os.path.dirname(__file__)
     os.chdir(current)
     GCC = open('./gcc_path.txt', 'r').read()
     
 def compile_file(file, output):
+    """Compile FILE to OUTPUT"""
     os.chdir(os.path.dirname(__file__))
     fd = os.popen(FORMAT % (GCC, file, output))
     text = open('__output__', 'r').read()
@@ -26,6 +31,7 @@ def compile_file(file, output):
     return c
 
 def file_to_here(file):
+    """Drag FILE to the current path to compile and judge."""
     f1 = open(file, 'r')
     fname = open('id.txt', 'r').read()
     f2=open(f'{fname}.c', 'w')
@@ -41,6 +47,9 @@ def file_to_here(file):
     return f'{fname}.c', fname
 
 def compile_proc(file, statobj: Status, updater, stop_proc):
+    """Full compile procedure for FILE. statusobj is a status.Status object, which stores
+    status.
+    updater/stop_proc: function(stat:Status), handler for status update & stop compiling/judging."""
     _is = isinstance
     try:
         fd_name = file_to_here(file)
