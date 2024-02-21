@@ -21,11 +21,11 @@ Beware: There's a chance that outputs -0.00. Turn it into 0.00.""",
 [["""2
 1 plus 4""","""5.00"""],
 ["""10
-1 plus 1 add 1 sutracts 1 multiplies 5 times 3 modulo 5 plus 5 minus 10 times 0""", """0.00"""],
+1 plus 1 add 1 sutracts 1 multiplies 5 times 3 modulo 5 plus 5 minus 10 times 0""", """0.00""", False],
 ["""5
-2.5 times 10 divides 20 times 8 plus 10.5""", """20.50"""],
+2.5 times 10 divides 20 times 8 plus 10.5""", """20.50""", False],
 ["""7
-3.7 plus 4.5 multiplies 2.7 plus 3.7 add 2.2 divides 7.5 subtracts 2""", """1.74"""],
+3.7 plus 4.5 multiplies 2.7 plus 3.7 add 2.2 divides 7.5 subtracts 2""", """1.74""", False],
 ["""10
-1 plus 1 add 1 sutracts 1 multiplies 5 times 3 divides 0 plus 5 minus 10 times 0""", """NaN"""]],
+1 plus 1 add 1 sutracts 1 multiplies 5 times 3 divides 0 plus 5 minus 10 times 0""", """NaN""", False]],
 ]

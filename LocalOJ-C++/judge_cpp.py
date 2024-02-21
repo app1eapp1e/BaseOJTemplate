@@ -42,7 +42,9 @@ def get_output(exename, inputdat, args=[]):
     
     
 
-def judge_proc_cpp(file, statobj: Status, updater, stop_proc, load_key):
+def judge_proc_cpp(file, statobj: Status, updater, stop_proc, load_key,
+                   spjmod=None):
+    existspj = not (spjmod == None)
     _is = isinstance
     exename = compiling_cpp.compile_proc(file, statobj, updater, stop_proc)
     if exename==-1:
@@ -58,7 +60,7 @@ def judge_proc_cpp(file, statobj: Status, updater, stop_proc, load_key):
     has_error = False
     all_rte = True
     all_tle = True
-    for i, o in load_key.data:
+    for i, o, spj in load_key.data:
         do_cmp = True
         p = PointData()
         try:
@@ -69,20 +71,33 @@ def judge_proc_cpp(file, statobj: Status, updater, stop_proc, load_key):
                 do_cmp = False
                 
             if do_cmp:
-                correct = load_key.cmp(inputid, output)
-                if correct:
-                    all_rte = False
-                    all_tle = False
-                    has_ac = True
-                    p.rank = load_key.pvalue
-                    statobj.rank += load_key.pvalue
-                    p.kind = Accepted()
-                else:
-                    all_rte = False
-                    all_tle = False
-                    has_error = True
-                    p.rank = 0
-                    p.kind = WrongAnswer()
+                if not spj: # added this block
+                    correct = load_key.cmp(inputid, output)
+                    if correct:
+                        all_rte = False
+                        all_tle = False
+                        has_ac = True
+                        p.rank = load_key.pvalue
+                        statobj.rank += load_key.pvalue
+                        p.kind = Accepted()
+                    else:
+                        all_rte = False
+                        all_tle = False
+                        has_error = True
+                        p.rank = 0
+                        p.kind = WrongAnswer()
+                elif existspj:
+                    p.kind = SpecialJudgement()
+                    p.rank = spjmod.special_judge(load_key.data[inputid][1],
+                                                  output, load_key.pvalue)
+                    statobj.rank += p.rank
+                    if p.rank == load_key.pvalue:
+                        all_rte = False
+                        all_tle = False
+                        has_ac = True
+                        p.kind = Accepted()
+                    else:
+                        has_error = True
         except func_timeout.exceptions.FunctionTimedOut:
             all_rte = False
             has_error = True

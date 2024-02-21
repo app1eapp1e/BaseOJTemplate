@@ -6,8 +6,6 @@ import subprocess
 import time
 import os
 
-# The comments are also for judge_[C/CPP/Pascal].
-
 class LoadedKey:
     def __init__(self, data):
         self.data = data
@@ -42,16 +40,16 @@ def get_output(exename, inputdat, args=[]):
     
     
 
-def judge_proc_c(file, statobj: Status, updater, stop_proc, load_key):
+def judge_proc_c(file, statobj: Status, updater, stop_proc, load_key,
+                 spjmod=None):
+    existspj = not (spjmod == None)
     _is = isinstance
     exename = compiling_c.compile_proc(file, statobj, updater, stop_proc)
     if exename==-1:
         return
     while not os.path.exists(os.path.join(os.path.dirname(__file__), exename)):
         time.sleep(0.1)
-    time.sleep(0.7)# WARNING, this depends your compiler and computer speed
-    # os.popen has got this feature: redirecting operations are launched in another thread.
-    # So we need this sleep.
+    time.sleep(0.7)
     statobj.status = Judging()
     updater(statobj)
     inputid = 0
@@ -59,7 +57,7 @@ def judge_proc_c(file, statobj: Status, updater, stop_proc, load_key):
     has_error = False
     all_rte = True
     all_tle = True
-    for i, o in load_key.data:
+    for i, o, spj in load_key.data:
         do_cmp = True
         p = PointData()
         try:
@@ -70,27 +68,40 @@ def judge_proc_c(file, statobj: Status, updater, stop_proc, load_key):
                 do_cmp = False
                 
             if do_cmp:
-                correct = load_key.cmp(inputid, output)
-                if correct:
-                    all_rte = False
-                    all_tle = False
-                    has_ac = True
-                    p.rank = load_key.pvalue
-                    statobj.rank += load_key.pvalue
-                    p.kind = Accepted()
-                else:
-                    all_rte = False
-                    all_tle = False
-                    has_error = True
-                    p.rank = 0
-                    p.kind = WrongAnswer()
+                if not spj:
+                    correct = load_key.cmp(inputid, output)
+                    if correct:
+                        all_rte = False
+                        all_tle = False
+                        has_ac = True
+                        p.rank = load_key.pvalue
+                        statobj.rank += load_key.pvalue
+                        p.kind = Accepted()
+                    else:
+                        all_rte = False
+                        all_tle = False
+                        has_error = True
+                        p.rank = 0
+                        p.kind = WrongAnswer()
+                elif existspj:
+                    p.kind = SpecialJudgement()
+                    p.rank = spjmod.special_judge(load_key.data[inputid][1],
+                                                  output, load_key.pvalue)
+                    statobj.rank += p.rank
+                    if p.rank == load_key.pvalue:
+                        all_rte = False
+                        all_tle = False
+                        has_ac = True
+                        p.kind = Accepted()
+                    else:
+                        has_error = True
         except func_timeout.exceptions.FunctionTimedOut:
             all_rte = False
             has_error = True
             p.kind = TimeLimitExceeded()
         statobj.pointdata.append(p)
         inputid += 1
-    # The judgements are not fully correct.
+        
     if all_rte:
         statobj.kind = RTError()
     elif all_tle:

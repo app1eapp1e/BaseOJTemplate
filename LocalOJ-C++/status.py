@@ -10,6 +10,9 @@ class Status:
         self.pointdata = []
         self.user = USER
 
+def log_warn(txt):
+    print('[-] Status.Warning:', txt)
+
 class PointData:
     kind = None
     rank = 0
@@ -151,6 +154,9 @@ class SuccessfullyCompile:
     pass
 
 class TimeLimitExceeded:
+    pass
+
+class SpecialJudgement:
     pass
 
 ### STATUS KINDS

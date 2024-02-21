@@ -20,7 +20,7 @@ Input an integer and output the process of it changing to 1.""",
 8
 4
 2
-1"""],
+1""", False],
 ["""99""", """298
 149
 448
@@ -45,7 +45,7 @@ Input an integer and output the process of it changing to 1.""",
 8
 4
 2
-1"""],
+1""", False],
 ["""1145""", """3436
 1718
 859
@@ -195,7 +195,7 @@ Input an integer and output the process of it changing to 1.""",
 8
 4
 2
-1"""],
+1""", False],
 ["""27""", """82
 41
 124
@@ -306,7 +306,7 @@ Input an integer and output the process of it changing to 1.""",
 8
 4
 2
-1"""],
+1""", False],
 ["""992837457""", """2978512372
 1489256186
 744628093
@@ -468,5 +468,5 @@ Input an integer and output the process of it changing to 1.""",
 8
 4
 2
-1"""]],
+1""", False]],
 ]

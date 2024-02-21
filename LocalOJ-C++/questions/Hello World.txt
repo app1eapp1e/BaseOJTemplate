@@ -10,7 +10,8 @@ Now your task is make a program Hello World.""",
 """(None)""",
 """hello world""",
 ]],
-"""Don't forget "using namespace std;"!""",
-[["""""","""hello world"""],["""""","""hello world"""],["""""","""hello world"""],["""""","""hello world"""],["""""","""hello world"""]],
+"""Don't forget "using namespace std;"!
+In Testnode #5, there'll be SPJ.""",
+[["""""","""hello world""", False],["""""","""hello world""", False],["""""","""hello world""", False],["""""","""hello world""", False],["""""","""hello world""", True]],
 """"""
 ]

@@ -16,9 +16,9 @@ else, he's healthy, output "Not Fever".""",
 """37 Celcius = 98.6 Farenheit, in range of emergent""",
 
 [
-["""36""", """Not Fever"""],
-["""40""", """Emergent"""],
-["""31""", """Urgent"""],
-["""46""", """Urgent"""],
-["""32""", """Not Fever"""]],
+["""36""", """Not Fever""", False],
+["""40""", """Emergent""", False],
+["""31""", """Urgent""", False],
+["""46""", """Urgent""", False],
+["""32""", """Not Fever""", False]],
 ]

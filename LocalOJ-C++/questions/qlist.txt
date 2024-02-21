@@ -8,5 +8,3 @@ Triangular Number
 N!
 Hailstorm Hypo
 Golden Bach
-Closed Range Sum
-Closed Range Sum Plus

@@ -1,4 +1,3 @@
-# CLAIM: QID = Question ID
 qlist = []
 
 def update_qlist():

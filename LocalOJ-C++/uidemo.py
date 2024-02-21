@@ -76,7 +76,7 @@ def stat_view(stats, qid):
             print('[-] Try again')
         pg = input('A(ll submissions)/S(ingle submission)/Q(uit) > ').lower()
 
-def judge(answer):
+def judge(answer, spjmod):
     language = input('Language > ')
     language = language.capitalize()
     if language not in ['C', 'C++', 'Python', 'Pascal']:
@@ -90,13 +90,17 @@ def judge(answer):
             return
         s = Status()
         if language == 'C++':
-            judge_proc_cpp(file, s, updater, stop_proc, LoadedKey(answer))
+            judge_proc_cpp(file, s, updater, stop_proc, LoadedKey(answer),
+                           spjmod)
         elif language == 'C':
-            judge_proc_c(file, s, updater, stop_proc, LoadedKey(answer))
+            judge_proc_c(file, s, updater, stop_proc, LoadedKey(answer),
+                         spjmod)
         elif language == 'Python':
-            judge_proc_py(file, s, updater, stop_proc, LoadedKey(answer))
+            judge_proc_py(file, s, updater, stop_proc, LoadedKey(answer),
+                          spjmod)
         elif language == 'Pascal':
-            judge_proc_pascal(file, s, updater, stop_proc, LoadedKey(answer))
+            judge_proc_pascal(file, s, updater, stop_proc, LoadedKey(answer),
+                              spjmod)
     except (IOError, FileNotFoundError) as e:
         print('[-] %s' % e)
         return
@@ -114,6 +118,13 @@ def seek_back():
 def do_question(qid):
     global JUDGING_ID
     current_page = 'd'
+    try:
+        spjmod = __import__('questions.%s' % qlist[qid])
+        spjmod = getattr(spjmod, qlist[qid])
+        print('[+] Loaded SPJ')
+    except Exception:
+        print('No/Corrupt SPJ for this question')
+        spjmod = None
     try:
         data = seek_for_qid(qid)
         answer = data[5]
@@ -146,7 +157,7 @@ def do_question(qid):
             return
         elif current_page == 'j':
             JUDGING_ID = qid
-            judge(answer)
+            judge(answer, spjmod)
         elif current_page == 's':
             if can_get_info(qid):
                 print('* STATISTICS *')
