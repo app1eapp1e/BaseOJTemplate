@@ -91,3 +91,11 @@ One line, P and Q, spaced, are primes, that bas the largest Q and smallest P, an
 3 17
 # hint
 20=3+17=7+13, we select the smallest P=3, Q=17.
+
+***
+
+# Let's see what can this program do
+- I/O Judging
+- Statistics / Submission history view
+- Special judge
+- Manipulate multi-user history
